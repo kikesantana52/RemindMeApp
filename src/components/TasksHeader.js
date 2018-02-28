@@ -17,16 +17,17 @@ export default class TasksHeader extends Component<props>{
           month = currentDate.getMonth(),
           year = currentDate.getFullYear(),
           date = currentDate.getDate();
-    const daysOfTheWeek= [
-
-    ];
-    return `${day} ${date} de ${month} ${year}`;
+    const daysOfTheWeek= ['','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo' ];
+    const months= ['enero','febrero','marzo','abril','mayo','junio','julio' ,'agosto','septiembre','octubre','noviembre','diciembre' ];
+    return `${daysOfTheWeek[day]} ${date} de ${months[month]} ${year}`;
   }
+
   render(){
+    const taskCount = this.props.toBeCompleted;
     return(
         <View style={ styles.Container }>
           <Image style={styles.userAvatar} source={require('./../images/user-avatar.png')}/>
-          <Text style={styles.pendingTasksText}>6 Pendientes</Text>
+          <Text style={styles.pendingTasksText}>{taskCount} Pendientes</Text>
           <Text style={styles.dateText}>{this.generateDate()}</Text>
         </View>
 
